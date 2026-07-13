@@ -285,6 +285,13 @@
       .fp-card:hover .fp-card__info { opacity: 1; transform: none; }
     }
     /* Mobile/tablet — image stays fully visible, text moves to a caption below it */
+    /* CTA tile — "Alle Bestseller ansehen" as a card in the grid */
+    .fp-cta { grid-column: span 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; aspect-ratio: 1 / 1; border-radius: var(--radius-lg); background: var(--color-teal); color: var(--color-white); text-decoration: none; text-align: center; padding: 2rem; transition: background 0.35s cubic-bezier(0.2,0.7,0.2,1); }
+    .fp-cta:hover { background: var(--color-teal-600); }
+    .fp-cta__label { font-size: 1.5rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; max-width: 12ch; }
+    .fp-cta__arrow { width: 3.25rem; height: 3.25rem; border-radius: 50%; background: rgba(255,255,255,0.16); display: inline-flex; align-items: center; justify-content: center; transition: background 0.35s ease, transform 0.35s cubic-bezier(0.2,0.7,0.2,1); }
+    .fp-cta:hover .fp-cta__arrow { background: var(--color-white); color: var(--color-teal); transform: translateX(0.25rem); }
+    .fp-cta__arrow svg { width: 1.125rem; height: 1rem; }
     @media (max-width: 64rem) {
       .fp-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
       .fp-card, .fp-card--wide { grid-column: span 1; }
@@ -295,12 +302,13 @@
       .fp-card__cat { color: var(--color-teal); }
       .fp-card__name { color: var(--color-digital-black); font-size: 1.0625rem; }
       .fp-card__meta { color: var(--color-graphite-600); }
+      .fp-cta { grid-column: span 1; aspect-ratio: 1 / 1; }
     }
     @media (max-width: 35rem) {
       .fp-grid { grid-template-columns: 1fr; gap: 1.75rem; padding: 0 1.5rem; }
       .fp-card__media, .fp-card--wide .fp-card__media { aspect-ratio: 4 / 3; }
+      .fp-cta { aspect-ratio: 16 / 9; }
     }
-    .bs-more { display: flex; justify-content: center; margin-top: 6rem; }
 
     /* ════════ KATEGORIEN — pinned category strip, center card largest ════════ */
     .cs-stack { position: relative; background: var(--color-white); border-bottom: 0.0625rem solid var(--color-graphite-200); }
@@ -324,14 +332,11 @@
     /* Mobile/tablet — no scroll-jacking: a simple vertical grid that scrolls with the page */
     @media (max-width: 64rem) {
       .cs-viewport { overflow: visible; }
-      .cs-track { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; width: auto; padding: 0 1.5rem; transform: none !important; }
-      .cs-card { width: auto; max-width: none; height: auto; aspect-ratio: 3 / 4; transform: none !important; opacity: 1 !important; }
-      .cs-card__label { padding: 1.25rem 1.25rem; }
-      .cs-card__label strong { font-size: 1.125rem; }
-      .cs-card__label span { font-size: 0.875rem; }
-    }
-    @media (max-width: 30rem) {
-      .cs-track { grid-template-columns: 1fr; }
+      .cs-track { display: grid; grid-template-columns: 1fr; gap: 1.25rem; width: auto; padding: 0 1.5rem; transform: none !important; }
+      .cs-card { width: auto; max-width: none; height: auto; aspect-ratio: 4 / 3; transform: none !important; opacity: 1 !important; }
+      .cs-card__label { padding: 1.5rem 1.5rem; }
+      .cs-card__label strong { font-size: 1.25rem; }
+      .cs-card__label span { font-size: 0.9375rem; }
     }
 
     /* ════════ STATEMENT — full-width manifest + stats row (bloom3d layout) ════════ */
@@ -765,7 +770,7 @@
             </div>
           </div>
         </a>
-        <a href="#" class="fp-card fp-card--wide">
+        <a href="#" class="fp-card">
           <div class="fp-card__media"><img src="images/bestseller/pflanzkuebel-hochbeet.jpg" alt="Pflanzkübel mit Stauraum vor einem Wohnhaus" loading="lazy"></div>
           <div class="fp-card__scrim"></div>
           <div class="fp-card__info">
@@ -776,7 +781,11 @@
             </div>
           </div>
         </a>
-        <a href="#" class="fp-card fp-card--wide">
+        <a href="#" class="fp-cta">
+          <span class="fp-cta__label">Alle Bestseller ansehen</span>
+          <span class="fp-cta__arrow"><svg viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12M7 1l6 5-6 5"/></svg></span>
+        </a>
+        <a href="#" class="fp-card">
           <div class="fp-card__media"><img src="images/bestseller/muelltonnenbox-3er.jpg" alt="Mülltonnenbox als 3er-Set in gepflasterter Einfahrt" loading="lazy"></div>
           <div class="fp-card__scrim"></div>
           <div class="fp-card__info">
@@ -787,9 +796,6 @@
             </div>
           </div>
         </a>
-      </div>
-      <div class="bs-more" data-reveal>
-        <a href="#" class="btn btn--secondary btn--lg">Alle Bestseller ansehen</a>
       </div>
     </section>
 
