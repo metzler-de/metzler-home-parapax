@@ -250,6 +250,10 @@
     }
     .trustbar__item:focus-visible .trustbar__face--front, .trustbar__item.is-hinting .trustbar__face--front, .trustbar__item.is-flipped .trustbar__face--front { transform: rotateY(-180deg); }
     .trustbar__item:focus-visible .trustbar__face--back, .trustbar__item.is-hinting .trustbar__face--back, .trustbar__item.is-flipped .trustbar__face--back { transform: rotateY(0deg); box-shadow: 0 14px 32px rgba(0,0,0,0.18); }
+    .trustbar__more { display: flex; justify-content: center; margin-top: 2.5rem; }
+    .trustbar__link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; font-weight: 700; color: var(--color-teal); text-decoration: none; transition: gap 0.3s cubic-bezier(0.2,0.7,0.2,1); }
+    .trustbar__link:hover { gap: 0.875rem; }
+    .trustbar__link svg { width: 1rem; height: 0.875rem; }
     .strip-viewport { position: relative; }
     .strip-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 40px; height: 40px; border-radius: 4px; border: 1px solid var(--color-graphite-300); background: var(--color-white); color: var(--color-digital-black); display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.18); transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.22s ease; }
     .strip-arrow svg { width: 24px; height: 24px; stroke-width: 1.5; }
@@ -1088,6 +1092,10 @@
     <!-- ════════ TRUST BAR — awards & proof ════════ -->
     <section class="trustbar" data-reveal aria-label="Auszeichnungen und Vertrauen">
       <div class="container">
+        <div class="section-intro section-intro--center" data-reveal>
+          <p class="eyebrow">Vertrauen seit 2013</p>
+          <h2 class="section-display">Gute Gründe, uns zu vertrauen</h2>
+        </div>
         <div class="strip-viewport trustbar__viewport">
           <button class="strip-arrow strip-arrow--prev" type="button" data-strip-scroll="prev" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
           <ul class="trustbar__rail" role="list">
@@ -1228,6 +1236,9 @@
 
           </ul>
           <button class="strip-arrow strip-arrow--next" type="button" data-strip-scroll="next" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="trustbar__more" data-reveal>
+          <a class="trustbar__link" href="#auszeichnungen">Zur Auszeichnung <svg viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12M7 1l6 5-6 5"/></svg></a>
         </div>
       </div>
     </section>
