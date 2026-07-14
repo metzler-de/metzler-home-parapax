@@ -401,36 +401,195 @@
       .aw2-photos { gap: 2.5rem; }
     }
 
-    /* ════════ REVIEWS — canonical ════════ */
-    .rv-summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.75rem; margin-bottom: 3.5rem; }
-    .rv-head { display: flex; align-items: center; gap: 0.75rem; }
-    .rv-score { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; color: var(--color-digital-black); line-height: 1; }
-    .rv-head__meta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-    .rv-stars { display: flex; gap: 0.1875rem; }
-    .rv-stars svg { width: 1.125rem; height: 1.125rem; }
-    .rv-sub { font-size: 0.8125rem; color: var(--color-graphite-600); margin: 0; letter-spacing: 0.01em; }
-    .rv-divider { width: 0.0625rem; height: 2.25rem; background: var(--color-graphite-300); flex-shrink: 0; }
-    @media (max-width: 48rem) { .rv-divider { display: none; } }
-    .rv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    @media (max-width: 64rem) { .rv-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 48rem) { .rv-grid { grid-template-columns: 1fr; } }
-    .rv-card { background: var(--color-white); border: 0.0625rem solid var(--color-graphite-200); border-radius: var(--radius-lg); padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; transition: box-shadow 0.18s, border-color 0.18s; }
-    .rv-card:hover { box-shadow: var(--shadow-hover); border-color: var(--color-graphite-300); }
-    .rv-card__top { display: flex; align-items: center; gap: 0.875rem; }
-    .rv-avatar { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--color-teal-75); color: var(--color-teal-700); font-size: 0.875rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .rv-name { font-size: 0.9375rem; font-weight: 700; color: var(--color-digital-black); }
-    .rv-time { font-size: 0.75rem; color: var(--color-graphite-500); margin-top: 0.125rem; }
-    .rv-card .rv-stars svg { width: 1rem; height: 1rem; }
-    .rv-text { font-size: 0.9375rem; line-height: 1.6; color: var(--color-graphite-700); }
-    .rv-verified { display: flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; color: var(--color-green); font-weight: 600; margin-top: auto; }
-    .rv-verified svg { width: 0.875rem; height: 0.875rem; }
-    .rv-platforms { display: flex; align-items: center; justify-content: center; gap: 0.625rem; flex-wrap: wrap; }
-    .rv-pill { display: inline-flex; align-items: center; gap: 0.4375rem; padding: 0.5rem 0.9375rem; border-radius: var(--radius-pill); border: 0.0625rem solid var(--color-graphite-200); background: var(--color-white); font-size: 0.875rem; color: var(--color-graphite-700); text-decoration: none; cursor: pointer; white-space: nowrap; }
-    .rv-pill:hover { border-color: var(--color-teal); transform: translateY(-0.125rem); box-shadow: var(--shadow-card); }
-    .rv-pill strong { color: var(--color-digital-black); font-weight: 700; }
-    .rv-pill__count { color: var(--color-graphite-500); font-size: 0.8125rem; }
-    .rv-pill img, .rv-pill svg { width: 1rem; height: 1rem; }
-    .rv-more { display: flex; justify-content: center; margin-top: 2.5rem; }
+    /* ════════ REVIEWS — exact component from metzler-about-us ════════ */
+    .reviews { background: #F5F6FA; }
+    .reviews__rating-count { font-size: 0.875rem; font-weight: 500; color: #6a6a6a; letter-spacing: 0; margin-left: 4px; vertical-align: middle; position: relative; top: -2px; }
+    .section-title { font-size: 2.875rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #1A171B;
+      letter-spacing: -0.01em; }
+    .reviews__head { display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 48px; }
+    .reviews__tabs { display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 24px 0 32px;
+      padding: 8px;
+      background: #FFFFFF;
+      border: 1px solid #DADADA;
+      /* Match the review card radius (8px) for numeric consistency. */
+      border-radius: 8px;
+      overflow: hidden; }
+    .reviews__tab { flex: 1; justify-content: center; }
+    .reviews__tab { position: relative;
+      background: transparent;
+      border: 0;
+      padding: 14px 22px;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.65);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      /* Concentric with the .reviews__tabs (8px) minus 2px so the inner
+         pill stays visually parallel to the outer shell. */
+      border-radius: 6px;
+      transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease; }
+    .reviews__tab:hover { color: #1A171B;
+      background: rgba(0, 0, 0, 0.03); }
+    .reviews__tab.is-active { color: #1A171B;
+      background: rgba(0, 0, 0, 0.06);
+      box-shadow: none; }
+    .reviews__tab-logo { height: 20px;
+      width: 20px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0; }
+    .reviews__tab-score { font-weight: 700;
+      color: #1A171B;
+      font-variant-numeric: tabular-nums; }
+    .reviews__tab-count { font-size: 13px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.6);   /* ≥4.5:1 on white and the light tab track (was 0.45 ≈ 3.3:1) */
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em; }
+    .reviews__tab.is-active .reviews__tab-score { color: #015253; }
+    .reviews__cta { display: flex;
+      justify-content: center;
+      margin-top: 32px; }
+    .reviews__cta .tlink { display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-bottom: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1.5px #015253;
+      font-weight: 600;
+      transition: background 0.2s ease, color 0.2s ease; }
+    .reviews__cta .tlink:hover { background: #015253;
+      color: #FFFFFF; }
+    .reviews__rating { display: flex;
+      align-items: center;
+      gap: 16px; }
+    .reviews__rating-num { font-size: 42px;
+      font-weight: 700;
+      color: #1A171B;
+      line-height: 1; }
+    .reviews__rating-meta { display: flex; flex-direction: column; gap: 4px; }
+    .reviews__rating-stars { display: block; height: 42px; width: auto; }
+    .reviews__rating-label { font-size: 0.875rem;
+      color: rgba(0, 0, 0, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px; }
+    .reviews__rating-source { height: 18px; width: auto; }
+    .reviews__grid { display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px; }
+    .review { background: #FFFFFF;
+      border: 1px solid #DADADA;
+      /* Explicit 8px — identical to the .reviews__tabs bar above so the
+         two curves read as the same shape. */
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative; }
+    .review__platform { position: absolute;
+      top: calc(24px - 4px);
+      right: 24px;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      opacity: 0.95; }
+    .review__head { display: flex;
+      align-items: center;
+      gap: 16px; }
+    .review__avatar { width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(1, 82, 83, 0.08);
+      color: #015253;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0; }
+    .review__info { display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      flex: 1; }
+    .review__stars { display: block; height: 22px; width: auto; order: 1; }
+    .review__name { font-weight: 700; color: #1A171B; font-size: 0.875rem; order: 2; }
+    .review__quote { font-size: 1rem;
+      line-height: 1.6;
+      color: #1A171B;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden; }
+    .review__city { font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.55);
+      padding-top: 16px;
+      border-top: 1px solid #F0F0F0; }
+    @media (max-width: 720px) {
+      /* Reviews header — stack title + rating vertically on mobile */
+      .reviews__head { flex-direction: column;
+        align-items: flex-start;
+        gap: 16px; }
+      .reviews__rating { align-self: flex-start; }
+      .reviews__rating-num { font-size: 32px; }
+      .reviews__rating-stars { height: 24px; }
+      /* Reviews filter tabs — desktop segmented control, scrollable with peek */
+      .reviews__tabs { flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        position: relative;
+        /* Reserve a visible "peek window" on the right so the next tab
+           always shows beyond the second one. */
+        padding-right: 22%; }
+      .reviews__tabs::-webkit-scrollbar { display: none; }
+      .reviews__tab { flex: 0 0 auto;
+        scroll-snap-align: start;
+        padding: 10px 14px;
+        font-size: 13px;
+        gap: 8px; }
+      .reviews__tab-logo { width: 16px; height: 16px; }
+      .reviews__tab-count { font-size: 11px; }
+    }
+    @media (max-width: 900px) {
+      /* .reviews__head is display:flex by default — gap only. */
+      .reviews__head { gap: 20px; }
+      .reviews__grid { grid-template-columns: 1fr; }
+    }
+    .reviews__head-row { display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      width: 100%; }
+    .reviews__head-text { min-width: 0; }
+    .reviews__rating { flex-shrink: 0; }
+    @media (max-width: 1023px) {
+      .reviews__head-row { flex-direction: column;
+        align-items: flex-start;
+        gap: 16px; }
+    }
 
     /* ════════ FOOTER — canonical component ════════ */
     .ft { background: var(--color-teal-700); font-family: var(--font-family); }
@@ -488,7 +647,7 @@
     .hdr-link, .hdr-icon-btn, .hdr-menu-btn, .nav-alle-btn, .nav-cat, .search-clear,
     .side-menu-item, .side-menu-close, .mega-item-img, .mega-item-label,
     .ft-link, .ft-mint, .ft-soc-btn, .ft-legal span, .ft-copy .muted,
-    .strip-arrow, .rv-card, .rv-pill,
+    .strip-arrow, .review, .reviews__tab,
     .trustbar__cue-text, .hero__scroll {
       transition-duration: 0.35s;
       transition-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -1073,140 +1232,102 @@
       </div>
     </section>
 
-    <!-- ════════ BEWERTUNGEN — echte Kundenstimmen ════════ -->
-    <section class="section section--lg section--tinted" id="bewertungen">
+    <section class="reviews section" id="bewertungen" aria-label="Kundenstimmen">
       <div class="container">
-        <div class="section-intro section-intro--center" data-reveal style="margin-bottom: 1.5rem;">
+        <div class="reviews__head" data-reveal>
           <p class="eyebrow">Kundenstimmen</p>
-          <h2 class="section-display">Geprüft von 33.279 Kunden</h2>
-        </div>
-        <div class="rv-summary" data-reveal>
-          <div class="rv-head">
-            <span class="rv-score">4,72</span>
-            <div class="rv-head__meta">
-              <span class="rv-stars"><svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg><svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg><svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg><svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg><svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg></span>
-              <span class="rv-sub">33.279 geprüfte Bewertungen</span>
+          <div class="reviews__head-row">
+            <div class="reviews__head-text">
+              <h2 class="section-title">Was unsere Kunden sagen <span class="reviews__rating-count">(34.172 Bewertungen)</span></h2>
+            </div>
+            <div class="reviews__rating">
+              <div class="reviews__rating-num">4,72</div>
+              <img class="reviews__rating-stars" src="images/reviews/StarRating.svg" alt="4,72 von 5 Sternen"  loading="lazy" />
             </div>
           </div>
-          <span class="rv-divider" aria-hidden="true"></span>
-          <div class="rv-platforms">
-            <a class="rv-pill" href="https://www.google.com/search?q=Edelstahl-T%C3%BCrklingel.de+Bewertungen" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285F4' d='M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z'/%3E%3Cpath fill='%2334A853' d='M6.3 14.7l7 5.1C15 15.9 19.1 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 16.3 2 9.7 6.6 6.3 14.7z'/%3E%3Cpath fill='%23FBBC05' d='M24 46c5.4 0 10.3-1.8 14.1-5l-6.5-5.5C29.5 37 26.9 38 24 38c-6 0-11.1-4-12.8-9.5l-7 5.4C7.5 41.2 15.2 46 24 46z'/%3E%3Cpath fill='%23EA4335' d='M44.5 20H24v8.5h11.8c-1 3-3 5.5-5.7 7l6.5 5.5C42 35.6 46 30 46 24c0-1.3-.2-2.7-.5-4z'/%3E%3C/svg%3E" alt="Google">Google <strong>4,62</strong> <span class="rv-pill__count">(2.575)</span></a>
-            <a class="rv-pill" href="https://www.trustedshops.de/bewertung/" target="_blank" rel="noopener"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23FFDC0F'/%3E%3Cpath d='M12 5l1.5 4.5H18l-3.7 2.7 1.4 4.3L12 14l-3.7 2.5 1.4-4.3L6 9.5h4.5z' fill='%23333'/%3E%3C/svg%3E" alt="Trusted Shops">TrustedShops <strong>4,74</strong> <span class="rv-pill__count">(29.969)</span></a>
-            <a class="rv-pill" href="https://de.trustpilot.com/review/edelstahl-tuerklingel.de" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none"><polygon points="8,0.5 10,5.5 15.5,5.5 11,8.8 12.5,14 8,10.8 3.5,14 5,8.8 0.5,5.5 6,5.5" fill="#00B67A"/></svg>Trustpilot <strong>4,42</strong> <span class="rv-pill__count">(735)</span></a>
-          </div>
         </div>
-        <div class="rv-grid" data-reveal>
-          <article class="rv-card">
-            <div class="rv-card__top">
-              <span class="rv-avatar">MH</span>
-              <div>
-                <div class="rv-name">Martin Hellenschmidt</div>
-                <div class="rv-time">vor 15 Stunden</div>
+        <div class="reviews__tabs" data-reveal role="tablist" aria-label="Bewertungen filtern">
+          <button class="reviews__tab is-active" type="button" role="tab" aria-selected="true">Alle <span class="reviews__tab-score">4,72</span> <span class="reviews__tab-count">(34.172)</span></button>
+          <button class="reviews__tab" type="button" role="tab" aria-selected="false"><img class="reviews__tab-logo" src="images/reviews/Google.svg" alt=""  loading="lazy" />Google <span class="reviews__tab-score">4,61</span> <span class="reviews__tab-count">(2.690)</span></button>
+          <button class="reviews__tab" type="button" role="tab" aria-selected="false"><img class="reviews__tab-logo" src="images/reviews/TrustedShop.svg" alt=""  loading="lazy" />TrustedShops <span class="reviews__tab-score">4,73</span> <span class="reviews__tab-count">(30.673)</span></button>
+          <button class="reviews__tab" type="button" role="tab" aria-selected="false"><img class="reviews__tab-logo" src="images/reviews/TrustPilot.svg" alt=""  loading="lazy" />Trustpilot <span class="reviews__tab-score">4,42</span> <span class="reviews__tab-count">(809)</span></button>
+        </div>
+        <div class="reviews__grid" data-reveal>
+          <article class="review">
+            <img class="review__platform" src="images/reviews/Google.svg" alt="Google" title="Bewertung von Google"  loading="lazy" />
+            <div class="review__head">
+              <span class="review__avatar">FH</span>
+              <div class="review__info">
+                <img class="review__stars" src="images/reviews/StarRating.svg" alt="5 von 5 Sternen"  loading="lazy" />
+                <span class="review__name">Familie Hofmann</span>
               </div>
             </div>
-            <span class="rv-stars">
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-            </span>
-            <p class="rv-text">„Sehr gute Qualität und ein wirklich erstklassiger Service. Die Verarbeitung ist hervorragend und die Lieferung kam schnell und sicher verpackt bei uns an."</p>
-            <span class="rv-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verifizierter Kauf</span>
+            <p class="review__quote">„Briefkasten nach acht Jahren immer noch wie am ersten Tag. Kein Rost, keine Verfärbung. Die Gravur ist makellos. Würde sofort wieder bei Metzler bestellen."</p>
+            <div class="review__city">vor 22 Stunden</div>
           </article>
-          <article class="rv-card">
-            <div class="rv-card__top">
-              <span class="rv-avatar">BK</span>
-              <div>
-                <div class="rv-name">Berndt Kuhnert</div>
-                <div class="rv-time">vor 15 Stunden</div>
+          <article class="review">
+            <img class="review__platform" src="images/reviews/TrustedShop.svg" alt="Trusted Shops" title="Bewertung von Trusted Shops"  loading="lazy" />
+            <div class="review__head">
+              <span class="review__avatar">MB</span>
+              <div class="review__info">
+                <img class="review__stars" src="images/reviews/StarRating.svg" alt="5 von 5 Sternen"  loading="lazy" />
+                <span class="review__name">M. Bergmann</span>
               </div>
             </div>
-            <span class="rv-stars">
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-            </span>
-            <p class="rv-text">„Sehr gute Qualität und ein perfekter Service. Der Briefkasten sieht wunderschön aus und ist sehr hochwertig verarbeitet. Wir sind rundum zufrieden."</p>
-            <span class="rv-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verifizierter Kauf</span>
+            <p class="review__quote">„Beratung am Telefon erstklassig – wir wussten nicht, ob wir die XDM10 in unseren Altbau einbauen können. Termin gemacht, Frage geklärt, eine Woche später montiert. Top."</p>
+            <div class="review__city">vor 22 Stunden</div>
           </article>
-          <article class="rv-card">
-            <div class="rv-card__top">
-              <span class="rv-avatar">JB</span>
-              <div>
-                <div class="rv-name">Jens Blodau</div>
-                <div class="rv-time">vor 15 Stunden</div>
+          <article class="review">
+            <img class="review__platform" src="images/reviews/TrustPilot.svg" alt="Trustpilot" title="Bewertung von Trustpilot"  loading="lazy" />
+            <div class="review__head">
+              <span class="review__avatar">AG</span>
+              <div class="review__info">
+                <img class="review__stars" src="images/reviews/StarRating.svg" alt="5 von 5 Sternen"  loading="lazy" />
+                <span class="review__name">A. Gienger</span>
               </div>
             </div>
-            <span class="rv-stars">
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-            </span>
-            <p class="rv-text">„Sehr gutes System, funktioniert einwandfrei. Die Installation war einfach und die Anleitung gut verständlich. Alles passt perfekt und sieht hochwertig aus."</p>
-            <span class="rv-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verifizierter Kauf</span>
+            <p class="review__quote">„Ich vergleiche viel – kein anderer Anbieter kombiniert Material, Verarbeitung und Service auf diesem Niveau. Den Preis ist es wert."</p>
+            <div class="review__city">vor 22 Stunden</div>
           </article>
-          <article class="rv-card">
-            <div class="rv-card__top">
-              <span class="rv-avatar">TP</span>
-              <div>
-                <div class="rv-name">Thomas Pischel</div>
-                <div class="rv-time">vor 16 Stunden</div>
+          <article class="review">
+            <img class="review__platform" src="images/reviews/Google.svg" alt="Google" title="Bewertung von Google"  loading="lazy" />
+            <div class="review__head">
+              <span class="review__avatar">LK</span>
+              <div class="review__info">
+                <img class="review__stars" src="images/reviews/StarRating.svg" alt="5 von 5 Sternen"  loading="lazy" />
+                <span class="review__name">L. Krämer</span>
               </div>
             </div>
-            <span class="rv-stars">
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-            </span>
-            <p class="rv-text">„Die Paketbox und der Briefkasten sind sehr ordentlich verarbeitet. Das Paket kam perfekt verpackt an. Das nenne ich Qualität. Vielen Dank und gern wieder."</p>
-            <span class="rv-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verifizierter Kauf</span>
+            <p class="review__quote">„Schneller Versand, makellose Verarbeitung und persönliche Beratung am Telefon. Genau so muss Service aussehen. Klare Empfehlung."</p>
+            <div class="review__city">vor 1 Tag</div>
           </article>
-          <article class="rv-card">
-            <div class="rv-card__top">
-              <span class="rv-avatar">CB</span>
-              <div>
-                <div class="rv-name">Carsten Bell</div>
-                <div class="rv-time">vor 16 Stunden</div>
+          <article class="review">
+            <img class="review__platform" src="images/reviews/TrustedShop.svg" alt="Trusted Shops" title="Bewertung von Trusted Shops"  loading="lazy" />
+            <div class="review__head">
+              <span class="review__avatar">SR</span>
+              <div class="review__info">
+                <img class="review__stars" src="images/reviews/StarRating.svg" alt="5 von 5 Sternen"  loading="lazy" />
+                <span class="review__name">S. Reinhardt</span>
               </div>
             </div>
-            <span class="rv-stars">
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-            </span>
-            <p class="rv-text">„Tolle Ware und schnelle Lieferung. Der Edelstahl sieht fantastisch aus und die Gravur ist sehr sauber und präzise ausgeführt. Absolut empfehlenswert."</p>
-            <span class="rv-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verifizierter Kauf</span>
+            <p class="review__quote">„Briefkasten kam wie bestellt, top verpackt und keine Kratzer. Montage gut erklärt in der Anleitung. Hochwertige Wertarbeit – würde wieder kaufen."</p>
+            <div class="review__city">vor 2 Tagen</div>
           </article>
-          <article class="rv-card">
-            <div class="rv-card__top">
-              <span class="rv-avatar">VH</span>
-              <div>
-                <div class="rv-name">Viktor Herzog</div>
-                <div class="rv-time">vor 16 Stunden</div>
+          <article class="review">
+            <img class="review__platform" src="images/reviews/Google.svg" alt="Google" title="Bewertung von Google"  loading="lazy" />
+            <div class="review__head">
+              <span class="review__avatar">JW</span>
+              <div class="review__info">
+                <img class="review__stars" src="images/reviews/StarRating.svg" alt="5 von 5 Sternen"  loading="lazy" />
+                <span class="review__name">J. Weber</span>
               </div>
             </div>
-            <span class="rv-stars">
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-              <svg viewBox="0 0 15 15"><path d="M7.5 1.2l1.73 3.51 3.87.56-2.8 2.73.66 3.86L7.5 9.96l-3.46 1.92.66-3.86L1.9 5.27l3.87-.56z" fill="#FFC041"/></svg>
-            </span>
-            <p class="rv-text">„Tolles Design und hochwertige Materialien. Individuelle Anpassungsmöglichkeiten sind super. Der Kundenservice war freundlich und hat alle Fragen schnell beantwortet."</p>
-            <span class="rv-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verifizierter Kauf</span>
+            <p class="review__quote">„Edelstahl wirkt massiv und matt gebürstet, genau wie auf den Bildern. Gravur sauber. Der Versand war schnell – das war es absolut wert."</p>
+            <div class="review__city">vor 3 Tagen</div>
           </article>
         </div>
-        <div class="rv-more" data-reveal>
-          <a href="#" class="btn btn--secondary">Alle Bewertungen ansehen</a>
+        <div class="reviews__cta">
+          <a class="btn btn--secondary btn--lg" href="#">Weitere Bewertungen laden <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
         </div>
       </div>
     </section>
@@ -1681,7 +1802,7 @@
       if (reducedMotion) return;
       if (!window.matchMedia("(max-width: 64rem)").matches) return;
       const items = document.querySelectorAll(
-        "#fpGrid .fp-card, #csTrack .cs-card, #bewertungen .rv-card, .aw2-photo, .trustbar__item, #statement .stats-item"
+        "#fpGrid .fp-card, #csTrack .cs-card, #bewertungen .review, .aw2-photo, .trustbar__item, #statement .stats-item"
       );
       if (!items.length) return;
       items.forEach(el => el.classList.add("m-reveal"));
